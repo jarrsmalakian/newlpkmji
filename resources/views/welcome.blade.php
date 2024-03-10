@@ -77,7 +77,7 @@
                                     <a href="{{ url('/ap2ln')}}">AP2LN</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('/informasi')}}">Informasi</a>
+                                    <a class="drowpdown" href="{{ url('/informasi')}}">Informasi</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('/karir')}}">karir</a>
@@ -85,6 +85,12 @@
                                 <li class="nav-item">
                                     <a href="{{ url('/kontak')}}">kontak</a>
                                 </li>
+                                @if (Route::has('login'))
+                                    @auth
+                                <li class="nav-item">
+                                    <a href="{{ url('/dashboard')}}">admin</a>
+                                </li>
+                                @else
                                 <li class="main-button">
                                     <a href="{{ url('/login')}}">Login</a>
                                 </li>
@@ -115,7 +121,9 @@
                     <!-- <h6>let's grow tothether with us</h6> -->
                     <h2>let's grow together <em>with us</em></h2>
                     <div class="main-button scroll-to-section">
+                        @if (Route::has('register'))
                         <a href="{{ url('/register')}}">daftar magang</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -1723,5 +1731,8 @@
 
         <!-- Global Init -->
         <script src="{{ asset('assets/js/custom.js')}}"></script>
+        @endauth
+
+        @endif
     </body>
 </html>
